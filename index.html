@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Learn Canvas</h1>
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+  </body>
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // ======= 路径 =======
+    // ctx.beginPath();
+    // ctx.moveTo(100, 100);
+    // ctx.lineTo(200, 200);
+    // ctx.lineTo(100, 200);
+    // ctx.lineTo(100, 100);
+    // ctx.fillStyle = "blue";
+    // ctx.fill();
+    // ctx.strokeStyle = "red";
+    // ctx.stroke();
+
+    // =======线型=======
+    // ctx.beginPath();
+    // ctx.moveTo(100, 100);
+    // ctx.lineTo(200, 200);
+    // ctx.lineTo(100, 200);
+    // ctx.lineWidth = 3;
+    // ctx.lineCap = "round";
+    // ctx.lineJoin = "square";
+    // ctx.setLineDash([15, 15]);
+    // ctx.stroke();
+
+    // =======矩形=======
+    // ctx.rect(10, 10, 100, 100);
+    // ctx.fill();
+    // ctx.fillStyle = "green";
+    // ctx.fillRect(10, 10, 90, 90);
+    // ctx.strokeStyle = "red";
+    // ctx.strokeRect(10, 10, 50, 50);
+    // ctx.clearRect(15, 15, 40, 40);
+
+    // =======弧形=========
+    //ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    // ctx.beginPath();
+    // ctx.arc(60, 60, 50, 0, Math.PI * 2, true);
+    // ctx.fill();
+
+    // ctx.beginPath();
+    // ctx.moveTo(50, 20);
+    // ctx.arc(100, 20, 50, 0, Math.PI, false);
+    // ctx.strokeStyle = "red";
+    // ctx.stroke();
+
+    // //arcTo()有5个参数，前两个参数是第一个点的坐标
+    // //第三个参数和第四个参数是第二个点的坐标，
+    // //第五个参数是半径。然后，(0, 0)与(50, 50)形成一条直线，
+    // //然后(50, 50)与(100, 0)形成第二条直线。
+    // //弧线就是与这两根直线相切的部分
+    // ctx.beginPath();
+    // ctx.moveTo(0, 0);
+    // ctx.arcTo(50, 50, 100, 0, 25);
+    // ctx.lineTo(100, 0);
+    // ctx.strokeStyle = "blue";
+    // ctx.stroke();
+
+    // =======文本========
+    // ctx.font = "Bold 20px Arial";
+    // ctx.textAlign = "center";
+    // ctx.fillText("Hello Canvas", 100, 50);
+    // ctx.strokeText("Hello Joy Guan", 100, 80);
+    // var text1 = ctx.measureText("Hello Canvas");
+    // var text2 = ctx.measureText("Joy Guan");
+    // console.log(text1, text2);
+
+    // =======渐变色和图像填充=========
+    //     var gradient = ctx.createLinearGradient(0, 0, 200, 0);
+    // gradient.addColorStop(0, 'green');
+    // gradient.addColorStop(1, 'white');
+    // ctx.fillStyle = gradient;
+    // ctx.fillRect(10, 10, 200, 100);
+
+    // var gradient = ctx.createRadialGradient(100, 100, 50, 100, 100, 100);
+    // gradient.addColorStop(0, 'red');
+    // gradient.addColorStop(1, 'blue');
+    // ctx.fillStyle = gradient;
+    // ctx.fillRect(0, 0, 200, 200);
+
+    // var img = new Image();
+    // img.src = "https://example.com/pattern.png";
+    // img.onload = function() {
+    //   var pattern = ctx.createPattern(img, "repeat");
+    //   ctx.fillStyle = pattern;
+    //   ctx.fillRect(0, 0, 400, 400);
+    //   ctx.fill();
+    // };
+
+    // =======阴影=========
+    // ctx.shadowOffsetX = 10;
+    // ctx.shadowOffsetY = 10;
+    // ctx.shadowBlur = 5;
+    // ctx.shadowColor = "rgba(0,0,0,0.5)";
+    // ctx.fillStyle = "green";
+    // ctx.fillRect(10, 10, 100, 100);
+
+    // =======图像处理=========
+
+    //     var img = new Image();
+    // img.src = './nignx.png';
+    // img.onload = function () {
+    //   ctx.drawImage(img, 0, 0);
+    // };
+
+    // var image = new Image(60, 45);
+    // image.onload = drawImageActualSize;
+    // image.src = './nignx.png';
+    // function drawImageActualSize() {
+    //   canvas.width = this.naturalWidth;
+    //   canvas.height = this.naturalHeight;
+    //   ctx.drawImage(this, 0, 0, this.naturalWidth, this.naturalHeight);
+    // }
+    // var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    // console.log(imageData)
+    // ctx.rotate(45 * Math.PI / 180);
+
+    // =======动画示例=========
+    var posX = 20;
+    var posY = 100;
+
+    setInterval(function() {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      posX += 1;
+      posY += 0.25;
+      ctx.beginPath();
+      ctx.fillStyle = "white";
+      ctx.arc(posX, posY, 10, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+    }, 30);
+  </script>
+</html>
